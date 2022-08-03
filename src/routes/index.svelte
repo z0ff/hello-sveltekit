@@ -1,60 +1,21 @@
-<script context="module" lang="ts">
-    import type { Contents, Content } from 'newt-client-js';
-    
-    interface Image {
-        _id: string
-        fileName: string
-        fileSize: string
-        fileType: string
-        height: Number
-        width: Number
-        src: string
-    };
-
-    interface Machine extends Content {
-        name: string
-        usage: string
-        os: string
-        cpu: string
-        gpu: string
-        ram: Number
-        storage: Number
-        image: Image
-    };
-    
-    import type { LoadEvent, LoadOutput } from "@sveltejs/kit";
-
-    export async function load({ fetch }: LoadEvent): Promise<LoadOutput> {
-        const url = `${import.meta.env.VITE_API_BASE}machines/machine`;
-
-        const response = await fetch(url , {
-            headers: {
-                Authorization: `Bearer ${import.meta.env.VITE_API_SECRET}`,
-            }
-        });
-
-        const respJson = await response.json();
-
-        const respStr = JSON.stringify(respJson);
-
-        return response.ok
-        ? {
-            props: {
-                machines: respStr,
-            }
-        }
-        : {
-            status: response.status,
-            error: new Error('Error')
-        }
-    };
+<script>
+    import { pageTitle } from "../store";
+    pageTitle.set("Home");
 </script>
 
-<script lang="ts">
-    export let machines: string;
-</script>
+<div class="hero w-full min-h-fit" style="background-image: url(https://placeimg.com/1000/800/arch);">
+	<div class="hero-overlay bg-opacity-60" />
+	<div class="hero-content text-neutral-content">
+		<div class="max-w-md">
+			<h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+			<p class="mb-5">
+				Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+				quasi. In deleniti eaque aut repudiandae et a id nisi.
+			</p>
+			<a href="/about" class="btn btn-primary">Get Started</a>
+		</div>
+	</div>
+</div>
 
-<p>{ machines }</p>
-
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="container p-5 w-full flex-grow">
+</div>
