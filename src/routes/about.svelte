@@ -3,8 +3,10 @@
     pageTitle.set("About");
 </script>
 
-<div class="prose pt-5 inline-block lg:hidden"> 
-    <h1>About</h1>
+<div class="container p-5 pb-0 w-full">
+    <div class="prose inline-block lg:hidden"> 
+        <h1>About</h1>
+    </div>
 </div>
 
 <div class="container p-5 w-full flex-grow">

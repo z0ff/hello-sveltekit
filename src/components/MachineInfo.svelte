@@ -5,7 +5,7 @@
 
 <div class="card card-compact w-full bg-neutral shadow-x1">
 	<figure style="height: 300px">
-		<img class="cover" src={machine.image.src} alt="../../static/placeholder_machine.png" />
+		<img class="h-full w-full object-cover" src={machine.image.src} alt="../../static/placeholder_machine.png" />
 	</figure>
 	<div class="card-body bg-base-300">
 		<h2 class="card-title">{machine.name}</h2>
