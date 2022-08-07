@@ -14,6 +14,12 @@ declare export interface Image {
     src: string
 };
 
+declare export interface Meta {
+    title: string
+    description: string
+    ogImage: Image
+}
+
 declare export interface Machine extends Content {
     name: string
     usage: string
@@ -24,3 +30,10 @@ declare export interface Machine extends Content {
     storage: Number
     image: Image
 };
+
+declare export interface Article extends Content {
+    title: string
+    slug: string
+    meta: Meta
+    body: string
+}

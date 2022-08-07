@@ -1,25 +1,25 @@
 <script lang="ts">
 	import '../app.css';
 	import { pageTitle, isDarkMode } from '../store';
-    import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
-    let theme: string;
+	let theme: string;
 	let y: number;
 	let pageTitleValue: String;
 	let drawerContent: HTMLElement;
 
-    onMount(() => {
-        let isDark: boolean;
-        const storageTheme = sessionStorage.getItem('theme');
-        if (storageTheme == null) {
-            isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        } else {
-            isDark = storageTheme=="dark" ? true : false;
-        }
-        const elem = document.getElementById("darkmode") as HTMLInputElement | null;
-        switchTheme(isDark);
-        elem!.checked = isDark;
-    })
+	onMount(() => {
+		let isDark: boolean;
+		const storageTheme = sessionStorage.getItem('theme');
+		if (storageTheme == null) {
+			isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		} else {
+			isDark = storageTheme == 'dark' ? true : false;
+		}
+		const elem = document.getElementById('darkmode') as HTMLInputElement | null;
+		switchTheme(isDark);
+		elem!.checked = isDark;
+	});
 
 	pageTitle.subscribe((value) => {
 		pageTitleValue = value;
@@ -29,17 +29,17 @@
 		y = drawerContent!.scrollTop;
 	}
 
-    function switchTheme(f: boolean) {
-        theme = f ? "mydark" : "mylight";
-        isDarkMode.set(`${f}`);
-    }
+	function switchTheme(f: boolean) {
+		theme = f ? 'mydark' : 'mylight';
+		isDarkMode.set(`${f}`);
+	}
 
-    function toggleDarkMode() {
-        const elem = document.getElementById("darkmode") as HTMLInputElement | null;
-        elem!.checked = !elem!.checked;
-        switchTheme(elem!.checked);
-        sessionStorage.setItem('theme', elem!.checked ? "dark" : "light");
-    }
+	function toggleDarkMode() {
+		const elem = document.getElementById('darkmode') as HTMLInputElement | null;
+		elem!.checked = !elem!.checked;
+		switchTheme(elem!.checked);
+		sessionStorage.setItem('theme', elem!.checked ? 'dark' : 'light');
+	}
 
 	function toggleDrawer() {
 		const elem = document.getElementById('my-drawer-2') as HTMLInputElement | null;
@@ -83,15 +83,13 @@
 					>
 				</label>
 			</div>
-			{#if pageTitleValue != 'Home'}
-				<div class="flex-1 hidden lg:inline-block">
+			<div class="flex-1 hidden lg:inline-block">
+				{#if pageTitleValue != 'Home'}
 					<span class="px-5 normal-case text-2xl font-bold">
 						{pageTitleValue}
 					</span>
-				</div>
-			{:else}
-                <div class="flex-1 hidden lg:inline-block"></div>
-            {/if}
+				{/if}
+			</div>
 			<div class="flex-1 inline-block lg:hidden">
 				<a href="/" class="btn btn-ghost">
 					<div class="text-xl normal-case text-left">
@@ -105,10 +103,7 @@
 					<!-- this hidden checkbox controls the state -->
 					<input id="darkmode" type="checkbox" />
 					<!-- sun icon -->
-					<svg
-						class="swap-off fill-current"
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 24 24"
+					<svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 						><path
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -117,10 +112,7 @@
 						/></svg
 					>
 					<!-- moon icon -->
-					<svg
-						class="swap-on fill-current"
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 24 24"
+					<svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 						><path
 							stroke-linecap="round"
 							stroke-linejoin="round"
@@ -201,24 +193,38 @@
 			</a>
 			<ul class="menu overflow-y-auto">
 				<!-- Sidebar content here -->
-				<li><a on:click={toggleDrawer} href="/">
-                    <div class="text-xl text-left">
-                        <div>Home</div>
-                        <div class="text-sm">ホーム</div>
-                    </div>
-                </a></li>
-				<li><a on:click={toggleDrawer} href="/about">
-                    <div class="text-xl text-left">
-                        <div>About</div>
-                        <div class="text-sm">このサイトについて</div>
-                    </div>
-                </a></li>
-				<li><a on:click={toggleDrawer} href="/machines">
-                    <div class="text-xl text-left">
-                        <div>Machines</div>
-                        <div class="text-sm">PC一覧</div>
-                    </div>
-                </a></li>
+				<li>
+					<a on:click={toggleDrawer} href="/">
+						<div class="text-xl text-left">
+							<div>Home</div>
+							<div class="text-sm">ホーム</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a on:click={toggleDrawer} href="/whatsnew">
+						<div class="text-xl text-left">
+							<div>What's new?</div>
+							<div class="text-sm">新着情報</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a on:click={toggleDrawer} href="/about">
+						<div class="text-xl text-left">
+							<div>About</div>
+							<div class="text-sm">このサイトについて</div>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a on:click={toggleDrawer} href="/machines">
+						<div class="text-xl text-left">
+							<div>Machines</div>
+							<div class="text-sm">PC一覧</div>
+						</div>
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>

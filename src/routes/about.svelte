@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<div class="container p-5 w-full flex-grow">
+<div class="container p-5 w-full max-w-5xl flex-grow">
     <article class="prose max-w-none">
         <h2>本サイトについて</h2>
         <p>本サイトは、JavaScriptフレームワークとして<a href="https://kit.svelte.jp/">Sveltekit</a>、UIフレームワークとして<a href="https://daisyui.com/">daisyUI</a>を使用しております。</p>
