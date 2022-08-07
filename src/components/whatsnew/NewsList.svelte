@@ -15,7 +15,7 @@
 	<div class="card card-compact mx-auto w-full max-w-5xl sm:h-48 sm:card-side bg-base-100 shadow-xl">
 		<figure class="sm:w-48 h-48 sm:h-full">
             {#if article.meta.ogImage == undefined}
-                <img class="w-full h-full object-cover" src="../../assets/placeholder_machine.png" />
+                <img class="w-full h-full object-cover" src="placeholder_machine.png" />
             {:else}
                 <img class="w-full h-full object-cover" src={article.meta.ogImage.src} />
             {/if}
