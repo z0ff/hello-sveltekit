@@ -28,21 +28,21 @@
 </script>
 
 <script lang="ts">
-    import type { Article } from '../../global';
+    import type { Article } from '$lib/type';
 	export let article: Article;
-    import { pageTitle } from "../../store";
+    import { pageTitle } from "../../../store";
 
     pageTitle.set(`${article.title} - What's new?`);
 	const img_src =
-		article.meta.ogImage == undefined
+		article.meta == undefined || article.meta.ogImage == undefined
 			? null
 			: article.meta.ogImage.src;
 </script>
 
-<div class="hero h-60" style={`background-image: url(${img_src});`}>
+<div class="hero min-h-60 max-h-fit" style={`background-image: url(${img_src});`}>
 	<div class="hero-overlay bg-opacity-60" />
 	<div class="hero-content text-center text-neutral-content">
-		<div class="max-w-md">
+		<div class="max-w-5xl">
 			<h1 class="mb-5 text-5xl font-bold">{article.title}</h1>
             <p>作成: {article._sys.createdAt}<br>更新: {article._sys.updatedAt}</p>
 		</div>

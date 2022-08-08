@@ -202,7 +202,7 @@
 					</a>
 				</li>
 				<li>
-					<a on:click={toggleDrawer} href="/whatsnew">
+					<a on:click={toggleDrawer} href="/whatsnew/1">
 						<div class="text-xl text-left">
 							<div>What's new?</div>
 							<div class="text-sm">新着情報</div>

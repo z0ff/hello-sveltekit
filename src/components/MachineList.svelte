@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Contents, Machine } from "../global";
+    import type { Contents, Machine } from "$lib/type";
     import MachineInfo from "./MachineInfo.svelte";
     export let machines: Contents<Machine>;
 </script>
