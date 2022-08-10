@@ -1,8 +1,40 @@
+<script context="module" lang="ts">
+    import type { LoadEvent, LoadOutput } from "@sveltejs/kit";
+
+    export async function load({ fetch }: LoadEvent): Promise<LoadOutput> {
+        const url = `${import.meta.env.VITE_API_BASE}whatsnew/article?limit=3`;
+
+        const response = await fetch(url , {
+            headers: {
+                Authorization: `Bearer ${import.meta.env.VITE_API_SECRET}`,
+            },
+        });
+
+        const resp = await response.json();
+
+        //const respStr = JSON.stringify(respJson);
+
+        return response.ok
+        ? {
+            props: {
+                articles: resp,
+            }
+        }
+        : {
+            status: response.status,
+            error: new Error('Error')
+        }
+    };
+</script>
+
 <script lang="ts">
-	import About from '../components/hero/About.svelte'
-	import Contact from '../components/hero/Contact.svelte'
+	import News from '../components/hero/News.svelte';
+	import About from '../components/hero/About.svelte';
+	import Contact from '../components/hero/Contact.svelte';
 	import { pageTitle } from '../store';
+	import type { Contents, Article } from '$lib/type.d';
 	pageTitle.set('Home');
+	export let articles: Contents<Article>;
 </script>
 
 <div
@@ -12,12 +44,14 @@
 		<!--<div class="hero-overlay bg-opacity-60" />-->
 		<div class="hero-content text-neutral-content">
 			<div class="max-w-lg">
-				<h1 class="mb-5 text-9xl font-bold">Hello there.</h1>
+				<h1 class="mb-5 text-7xl md:text-9xl font-bold">Hello<br>there.</h1>
 				<p class="mb-5 text-xl">めちゃ拙いWebサイト</p>
 			</div>
 		</div>
 	</div>
 </div>
+
+<News articles={articles} />
 
 <About />
 

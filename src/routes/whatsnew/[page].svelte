@@ -36,7 +36,7 @@
     import NewsList from "../../components/whatsnew/NewsList.svelte";
     import { pageTitle } from "../../store";
 
-    pageTitle.set("What's new?");
+    pageTitle.set("What's new");
 
     export let articles: Contents<Article>;
     export let pageNumber: number;
