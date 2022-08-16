@@ -30,9 +30,10 @@
 <script lang="ts">
     import type { Article } from '$lib/type';
 	export let article: Article;
-    import { pageTitle } from "../../../store";
+    import { pageTitle, articleName } from "../../../store";
 
-    pageTitle.set(`${article.title} - What's new?`);
+    pageTitle.set("What's new");
+	articleName.set(article.title);
 	const img_src =
 		article.meta == undefined || article.meta.ogImage == undefined
 			? null

@@ -31,9 +31,10 @@
 <script lang="ts">
     import type { Contents, Machine } from '$lib/type';
     import MachineList from "../components/MachineList.svelte";
-    import { pageTitle } from "../store";
+    import { pageTitle, articleName } from "../store";
 
     pageTitle.set("Machines");
+    articleName.set("");
 
     export let machines: Contents<Machine>;
 </script>

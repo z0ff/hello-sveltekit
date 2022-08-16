@@ -1,11 +1,12 @@
 <script lang="ts">
 	import '../app.css';
-	import { pageTitle, isDarkMode } from '../store';
+	import { pageTitle, articleName, isDarkMode } from '../store';
 	import { onMount } from 'svelte';
 
 	let theme: string;
 	let y: number;
-	let pageTitleValue: String;
+	let pageTitleValue: string;
+	let articleNameValue: string
 	let drawerContent: HTMLElement;
 
 	onMount(() => {
@@ -24,6 +25,10 @@
 	pageTitle.subscribe((value) => {
 		pageTitleValue = value;
 	});
+
+	articleName.subscribe((value) => {
+		articleNameValue = value;
+	})
 
 	function getScroll() {
 		y = drawerContent!.scrollTop;
@@ -50,7 +55,13 @@
 </script>
 
 <svelte:head>
-	<title>{pageTitleValue} : Hello</title>
+	<title>{
+			pageTitleValue == 'Home'
+			? 'Hello'
+			: `${ articleNameValue
+			? `${articleNameValue} - ${pageTitleValue}`
+			: pageTitleValue} - Hello`
+	}</title>
 </svelte:head>
 
 <div class="drawer drawer-mobile" data-theme={theme}>
@@ -161,6 +172,11 @@
 					<div class="text-base">Sveltekit & daisyUI</div>
 				</div>
 			</a>
+			<div class="flex flex-row-reverse mb-4 inline-block lg:hidden">
+				<button on:click={toggleDrawer} class="btn btn-circle">
+				<svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
+				</button>
+			</div>
 			<ul class="menu overflow-y-auto">
 				<!-- Sidebar content here -->
 				<li>

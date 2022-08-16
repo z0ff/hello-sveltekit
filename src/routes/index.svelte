@@ -31,9 +31,10 @@
 	import News from '../components/hero/News.svelte';
 	import About from '../components/hero/About.svelte';
 	import Contact from '../components/hero/Contact.svelte';
-	import { pageTitle } from '../store';
+	import { pageTitle, articleName } from '../store';
 	import type { Contents, Article } from '$lib/type.d';
 	pageTitle.set('Home');
+    articleName.set('');
 	export let articles: Contents<Article>;
 </script>
 

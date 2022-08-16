@@ -1,6 +1,7 @@
 <script>
-    import { pageTitle } from "../store";
+    import { pageTitle, articleName } from "../store";
     pageTitle.set("About");
+    articleName.set("");
 </script>
 
 <div class="container p-5 pb-0 w-full">

@@ -34,9 +34,10 @@
 <script lang="ts">
     import type { Contents, Article } from "$lib/type";
     import NewsList from "../../components/whatsnew/NewsList.svelte";
-    import { pageTitle } from "../../store";
+    import { pageTitle, articleName } from "../../store";
 
     pageTitle.set("What's new");
+    articleName.set("");
 
     export let articles: Contents<Article>;
     export let pageNumber: number;
