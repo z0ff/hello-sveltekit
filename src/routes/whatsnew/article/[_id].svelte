@@ -16,13 +16,13 @@
 
 		return response.ok
 			? {
-					props: {
-						article: resp
-					}
+				props: {
+					article: resp
+				}
 			  }
 			: {
-					status: response.status,
-					error: new Error('Error')
+				status: response.status,
+				error: new Error('Error')
 			  };
 	}
 </script>
@@ -30,7 +30,7 @@
 <script lang="ts">
     import type { Article } from '$lib/type';
 	export let article: Article;
-    import { pageTitle, articleName } from "../../../store";
+    import { pageTitle, articleName } from "$lib/store";
 
     pageTitle.set("What's new");
 	articleName.set(article.title);
@@ -40,6 +40,14 @@
 			: article.meta.ogImage.src;
 </script>
 
+<div class="p-2 px-5 w-full max-w-5xl">
+	<div class="breadcrumbs text-sm text-left">
+		<ul>
+			<li><a href='/whatsnew/1'>記事一覧</a></li> 
+			<li class="truncate">{ article.title }</li>
+		</ul>
+	</div>
+</div>
 <div class="hero min-h-60 max-h-fit" style={`background-image: url(${img_src});`}>
 	<div class="hero-overlay bg-opacity-60" />
 	<div class="hero-content text-center text-neutral-content">

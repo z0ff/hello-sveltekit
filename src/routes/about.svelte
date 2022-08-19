@@ -1,5 +1,5 @@
 <script>
-    import { pageTitle, articleName } from "../store";
+    import { pageTitle, articleName } from "$lib/store";
     pageTitle.set("About");
     articleName.set("");
 </script>

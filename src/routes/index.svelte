@@ -31,7 +31,7 @@
 	import News from '../components/hero/News.svelte';
 	import About from '../components/hero/About.svelte';
 	import Contact from '../components/hero/Contact.svelte';
-	import { pageTitle, articleName } from '../store';
+	import { pageTitle, articleName } from '$lib/store';
 	import type { Contents, Article } from '$lib/type.d';
 	pageTitle.set('Home');
     articleName.set('');
@@ -39,10 +39,11 @@
 </script>
 
 <div
-	class="w-full from-primary to-secondary text-primary-content -my-[4rem] grid place-items-center items-end bg-gradient-to-br pt-20"
+	class="w-full min-h-screen relative -top-[4rem] -mb-[4rem] text-primary-content grid place-items-center items-end bg-cover bg-center"
+    style="background-image: url(https://placeimg.com/640/480/tech);"
 >
-	<div class="hero min-h-screen pb-[8rem]">
-		<!--<div class="hero-overlay bg-opacity-60" />-->
+	<div class="hero min-h-screen">
+		<div class="hero-overlay bg-opacity-60 backdrop-blur-sm" />
 		<div class="hero-content text-neutral-content">
 			<div class="max-w-lg">
 				<h1 class="mb-5 text-7xl md:text-9xl font-bold">Hello<br>there.</h1>

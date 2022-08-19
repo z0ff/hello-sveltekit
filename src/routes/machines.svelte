@@ -31,7 +31,7 @@
 <script lang="ts">
     import type { Contents, Machine } from '$lib/type';
     import MachineList from "../components/MachineList.svelte";
-    import { pageTitle, articleName } from "../store";
+    import { pageTitle, articleName } from "$lib/store";
 
     pageTitle.set("Machines");
     articleName.set("");
