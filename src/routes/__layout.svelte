@@ -76,8 +76,8 @@
 	>
 		<!-- Page content here -->
 		<div
-			class={`navbar sticky top-0 z-40 bg-opacity-90 backdrop-blur ${
-				switchNavbarStyle ? 'bg-base-300' : ''
+			class={`navbar sticky top-0 z-40 bg-opacity-90 ${
+				switchNavbarStyle ? 'bg-base-300 backdrop-blur' : ''
 			}`}
 		>
 			<div class="flex-none lg:hidden">

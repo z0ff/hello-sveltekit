@@ -15,8 +15,6 @@
 
         const resp = await response.json();
 
-        //const respStr = JSON.stringify(respJson);
-
         return response.ok
         ? {
             props: {
@@ -41,11 +39,16 @@
 
     export let articles: Contents<Article>;
     export let pageNumber: number;
-    console.log(pageNumber);
+    //console.log(pageNumber);
     const pages = Math.ceil(articles.total / articles.limit);
-    console.log(pages);
+    //console.log(pages);
 </script>
 
+<div class="container p-5 pb-0 w-full">
+    <div class="prose inline-block lg:hidden"> 
+        <h1>What's new</h1>
+    </div>
+</div>
 
 <div class="container p-5 w-full flex-grow">
     <NewsList articles={articles} />

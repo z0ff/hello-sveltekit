@@ -29,10 +29,5 @@
 				</div>
 			</div>
 		</a>
-		<!--
-        {#if i < articles.items.length - 1}
-			<div class="divider my-0"></div>
-        {/if}
-		-->
 	{/each}
 </div>
