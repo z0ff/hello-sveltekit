@@ -1,5 +1,7 @@
 <script lang="ts">
 	import '../app.css';
+	import Icon from '@iconify/svelte';
+	import Breadcrumbs from '../components/Breadcrumbs.svelte';
 	import { pageTitle, articleName, isDarkMode } from '$lib/store';
 	import { onMount } from 'svelte';
 
@@ -96,11 +98,18 @@
 					>
 				</label>
 			</div>
+			<!--
 			<div class="flex-1 hidden lg:inline-block">
 				{#if pageTitleValue != 'Home'}
 					<span class="px-5 normal-case text-2xl font-bold">
 						{pageTitleValue}
 					</span>
+				{/if}
+			</div>
+		-->
+			<div class="flex-1 ml-5 hidden lg:inline-block">
+				{#if pageTitleValue != 'Home'}
+					<Breadcrumbs page={pageTitleValue} article={articleNameValue} link={pageTitleValue=="What's new"&&articleNameValue!=""?"/whatsnew/1":""} />
 				{/if}
 			</div>
 			<div class="flex-1 inline-block lg:hidden">
@@ -130,6 +139,12 @@
 				</label>
 			</div>
 		</div>
+
+		{#if pageTitleValue != 'Home'}
+			<div class="p-2 px-5 w-full inline-block lg:hidden">
+					<Breadcrumbs page={pageTitleValue} article={articleNameValue} link={pageTitleValue=="What's new"&&articleNameValue!=""?"/whatsnew/1":""} />
+			</div>
+		{/if}
 
 		<slot />
 
@@ -189,37 +204,69 @@
 					</svg>
 				</button>
 			</div>
-			<ul class="menu overflow-y-auto">
+			<ul class="menu overflow-y-auto p-2 rounded-box">
 				<!-- Sidebar content here -->
 				<li>
-					<a on:click={toggleDrawer} href="/">
-						<div class="text-xl text-left">
-							<div>Home</div>
-							<div class="text-sm">ホーム</div>
+					<a
+						on:click={toggleDrawer}
+						class={pageTitleValue=='Home'?"active":""}
+						href="/">
+						<div class="flex flex-row gap-2 items-center">
+							<div>
+								<Icon icon="bx:home" width="24" />
+							</div>
+							<div class="text-xl text-left">
+								<div>Home</div>
+								<div class="text-sm">ホーム</div>
+							</div>
 						</div>
 					</a>
 				</li>
 				<li>
-					<a on:click={toggleDrawer} href="/whatsnew/1">
-						<div class="text-xl text-left">
-							<div>What's new</div>
-							<div class="text-sm">新着情報</div>
+					<a 
+						on:click={toggleDrawer}
+						class={pageTitleValue=="What's new"?"active":""}
+						href="/whatsnew/1">
+						<div class="flex flex-row gap-2 items-center">
+							<div>
+								<Icon icon="bx:news" width="24" />
+							</div>
+							<div class="text-xl text-left">
+								<div>What's new</div>
+								<div class="text-sm">新着情報</div>
+							</div>
 						</div>
 					</a>
 				</li>
 				<li>
-					<a on:click={toggleDrawer} href="/about">
-						<div class="text-xl text-left">
-							<div>About</div>
-							<div class="text-sm">このサイトについて</div>
+					<a
+						on:click={toggleDrawer}
+						class={pageTitleValue=='About'?"active":""}
+						href="/about">
+						<div class="flex flex-row gap-2 items-center">
+							<div>
+								<Icon icon="bx:info-circle" width="24" />
+							</div>
+							<div class="text-xl text-left">
+								<div>About</div>
+								<div class="text-sm">このサイトについて</div>
+							</div>
 						</div>
 					</a>
 				</li>
 				<li>
-					<a on:click={toggleDrawer} href="/machines">
-						<div class="text-xl text-left">
-							<div>Machines</div>
-							<div class="text-sm">PC一覧</div>
+					<a
+						on:click={toggleDrawer}
+						class={pageTitleValue=='Machines'?"active":""}
+						href="/machines">
+						<div class="flex flex-row gap-2 items-center">
+							<div>
+								<Icon icon="bx:server" width="24" />
+							</div>
+							<div class="text-xl text-left">
+								<div>Machines</div>
+								<div class="text-sm">PC一覧</div>
+							</div>
 						</div>
 					</a>
 				</li>

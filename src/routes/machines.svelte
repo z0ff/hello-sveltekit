@@ -39,10 +39,4 @@
     export let machines: Contents<Machine>;
 </script>
 
-<div class="container p-5 pb-0 w-full">
-    <div class="prose inset-0 inline-block text-left lg:hidden">
-        <h1>Machines</h1>
-    </div>
-</div>
-
 <MachineList machines={machines} />

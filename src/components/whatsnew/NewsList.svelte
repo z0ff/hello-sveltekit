@@ -1,11 +1,7 @@
 <script lang="ts">
+	import { formatDate } from '$lib/datetime';
 	import type { Contents, Article } from '$lib/type';
 	export let articles: Contents<Article>;
-
-    function formatDate(s: string) {
-        if (s.length != 24) return null;
-        return `${s.slice(0,4)}/${s.slice(5,7)}/${s.slice(8,10)}`;
-    }
 </script>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">

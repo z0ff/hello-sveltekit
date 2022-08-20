@@ -2,7 +2,7 @@
     import type { LoadEvent, LoadOutput } from "@sveltejs/kit";
 
     export async function load({ fetch }: LoadEvent): Promise<LoadOutput> {
-        const url = `${import.meta.env.VITE_API_BASE}whatsnew/article?limit=3`;
+        const url = `${import.meta.env.VITE_API_BASE}whatsnew/article?limit=4`;
 
         const response = await fetch(url , {
             headers: {

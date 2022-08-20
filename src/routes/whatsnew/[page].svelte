@@ -44,12 +44,6 @@
     //console.log(pages);
 </script>
 
-<div class="container p-5 pb-0 w-full">
-    <div class="prose inline-block lg:hidden"> 
-        <h1>What's new</h1>
-    </div>
-</div>
-
 <div class="container p-5 w-full flex-grow">
     <NewsList articles={articles} />
 </div>
